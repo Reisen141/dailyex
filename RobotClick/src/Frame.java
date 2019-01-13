@@ -35,14 +35,14 @@ public class Frame {
         Checkbox c1=new Checkbox("rest");
 
 
-        TextField tBattleX = new TextField(4);
-        TextField tBattleY = new TextField(4);
-        TextField tRestX = new TextField(4);
-        TextField tRestY = new TextField(4);
+        TextField tBattleX = new TextField("1372");
+        TextField tBattleY = new TextField("484");
+        TextField tRestX = new TextField("1152");
+        TextField tRestY = new TextField("719");
         TextField tStartX = new TextField("1757");
         TextField tStartY = new TextField("486");
-        TextField tLoop = new TextField(4);
-        TextField tTime = new TextField(4);
+        TextField tLoop = new TextField("20");
+        TextField tTime = new TextField("2");
 
         //点击按钮清空的监听事件
         bBatlle.addMouseListener(new MouseAdapter() {
