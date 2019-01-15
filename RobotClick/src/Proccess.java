@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Proccess {
 
-    static void start(Point p1,Point p2,Point p3,int loop,boolean flag,int time) throws AWTException {
+    static void start(Point p1,Point p2,Point p3,int loop,boolean flag) throws AWTException {
         Robot r = new Robot();
         Random ran=new Random();
 

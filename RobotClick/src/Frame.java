@@ -12,17 +12,20 @@ public class Frame {
         //frame的相关构造参数
         JFrame f = new JFrame("按键Java灵");
         f.setSize(100, 400);
-        f.setLocation(1780, 35);
+        f.setLocation(1780, 70);
         f.setLayout(new FlowLayout(1));
         f.setAlwaysOnTop(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setResizable(false);
+        f.setUndecorated(true);
+        f.setOpacity(0.7f);
 
         //button
         JButton bBatlle = new JButton("清空战斗点");
         JButton bRest = new JButton("清空休息点");
-        JButton bStartPoint = new JButton("清空开始点");
+
         JButton bLoop = new JButton("清空循环次数");
-        JButton bTime = new JButton("清空战场用时/秒");
+
         JButton bStart = new JButton("开始");
         JButton bEnd = new JButton("结束");
 
@@ -35,23 +38,19 @@ public class Frame {
         Checkbox c1=new Checkbox("rest");
 
 
-        TextField tBattleX = new TextField("1372");
-        TextField tBattleY = new TextField("484");
-        TextField tRestX = new TextField("1152");
-        TextField tRestY = new TextField("719");
+        TextField tBattle = new TextField("1293.603");
+        TextField tRest = new TextField("1152.719");
         TextField tStartX = new TextField("1757");
         TextField tStartY = new TextField("486");
         TextField tLoop = new TextField("20");
-        TextField tTime = new TextField("2");
+
 
         //点击按钮清空的监听事件
         bBatlle.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                tBattleX.getText();
-                tBattleX.setText("");
-                tBattleY.getText();
-                tBattleY.setText("");
+                tBattle.getText();
+                tBattle.setText("");
 
             }
         });
@@ -59,23 +58,12 @@ public class Frame {
         bRest.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                tRestX.getText();
-                tRestX.setText("");
-                tRestY.getText();
-                tRestY.setText("");
+                tRest.getText();
+                tRest.setText("");
 
             }
         });
-        //点击按钮清空的监听事件
-        bStartPoint.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                tStartX.getText();
-                tStartX.setText("");
-                tStartY.getText();
-                tStartY.setText("");
-            }
-        });
+
         //点击按钮清空的监听事件
         bLoop.addMouseListener(new MouseAdapter() {
             @Override
@@ -91,15 +79,15 @@ public class Frame {
             public void mouseClicked(MouseEvent e) {
                 try {
                     //给点赋值
-                    Point p1=new Point(Integer.parseInt(tBattleX.getText()),Integer.parseInt(tBattleY.getText()));
-                    Point p2=new Point(Integer.parseInt(tRestX.getText()),Integer.parseInt(tRestY.getText()));
+                    Point p1=new Point(Integer.parseInt(tBattle.getText().split("\\.")[0]),Integer.parseInt(tBattle.getText().split("\\.")[1]));
+                    Point p2=new Point(Integer.parseInt(tRest.getText().split("\\.")[0]),Integer.parseInt(tRest.getText().split("\\.")[1]));
                     Point p3=new Point(Integer.parseInt(tStartX.getText()),Integer.parseInt(tStartY.getText()));
                     loop=Integer.parseInt(tLoop.getText());
-                    time=Integer.parseInt(tTime.getText());
 
 
 
-                    Proccess.start(p1,p2,p3,loop,c1.getState(),time+20);
+
+                    Proccess.start(p1,p2,p3,loop,c1.getState());
                 } catch (AWTException e1) {
                     e1.printStackTrace();
                 }
@@ -113,16 +101,9 @@ public class Frame {
 
 
         f.add(bBatlle);
-        f.add(tBattleX);
-        f.add(tBattleY);
+        f.add(tBattle);
         f.add(bRest);
-        f.add(tRestX);
-        f.add(tRestY);
-        f.add(bStartPoint);
-        f.add(tStartX);
-        f.add(tStartY);
-        f.add(bTime);
-        f.add(tTime);
+        f.add(tRest);
         f.add(bLoop);
         f.add(tLoop);
         f.add(c1);
